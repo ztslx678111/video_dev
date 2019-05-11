@@ -10,13 +10,13 @@ public interface UserService {
 	 * @param username
 	 * @return
 	 */
-	public boolean queryUserNameisExist(String username);
+	public boolean queryUserNameIsExist(String username);
 	
 	/**
 	 * 保存用户 注册用户
 	 * @param user
 	 */
-	public void savaUser(Users user);
+	public void saveUser(Users user);
 	
 	/**
 	 * 用户登录，根据用户名和密码查询用户

@@ -37,7 +37,7 @@ public class RegistLoginController extends BasicController{
 		}
 		
 		//2.判断用户名是否存在
-		boolean boo = userService.queryUserNameisExist( user.getUsername() );
+		boolean boo = userService.queryUserNameIsExist( user.getUsername() );
 		
 		if( !boo ) {
 			//3.保存用户，注册信息
@@ -49,7 +49,7 @@ public class RegistLoginController extends BasicController{
 				user.setFollowCounts(0);
 				user.setReceiveLikeCounts(0);
 				user.setFaceImage(null);
-				userService.savaUser(user);
+				userService.saveUser(user);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

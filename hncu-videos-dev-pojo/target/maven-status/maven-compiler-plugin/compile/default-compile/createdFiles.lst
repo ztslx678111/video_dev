@@ -1,0 +1,12 @@
+cn\hncu\pojo\SearchRecords.class
+cn\hncu\pojo\Videos.class
+cn\hncu\pojo\Comments.class
+cn\hncu\pojo\vo\VideosVo.class
+cn\hncu\pojo\vo\PublisherVideo.class
+cn\hncu\pojo\UsersReport.class
+cn\hncu\pojo\UsersFans.class
+cn\hncu\pojo\UsersLikeVideos.class
+cn\hncu\pojo\Bgm.class
+cn\hncu\pojo\vo\UsersVo.class
+cn\hncu\pojo\Users.class
+cn\hncu\pojo\vo\CommentsVO.class

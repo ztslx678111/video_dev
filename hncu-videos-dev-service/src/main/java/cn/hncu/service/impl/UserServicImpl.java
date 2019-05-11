@@ -39,7 +39,7 @@ public class UserServicImpl implements UserService {
 	
 	@Transactional(propagation = Propagation.SUPPORTS)//事务级别,查询
 	@Override
-	public boolean queryUserNameisExist(String username) {
+	public boolean queryUserNameIsExist(String username) {
 		
 		Users user=new Users();
 		user.setUsername(username);
@@ -52,7 +52,7 @@ public class UserServicImpl implements UserService {
 
 	@Transactional(propagation = Propagation.REQUIRED)//事务级别，插入操作
 	@Override
-	public void savaUser(Users user) {
+	public void saveUser(Users user) {
 		
         //补个UUid
 		String uuid=UUID.randomUUID().toString().replaceAll("-", "");
@@ -75,6 +75,7 @@ public class UserServicImpl implements UserService {
 		return result;
 	}
 
+    @Transactional(propagation = Propagation.REQUIRED)
 	@Override
 	public void updateUserInfo(Users user) {
 		Example userExample = new Example(Users.class);

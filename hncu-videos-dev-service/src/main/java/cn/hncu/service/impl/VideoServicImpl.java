@@ -72,6 +72,7 @@ public class VideoServicImpl implements VideoService {
 		
 	}
    
+	//更新视频
 	@Transactional(propagation = Propagation.REQUIRED)
 	@Override
 	public void updateVideo(String videoId, String coverPath) {
@@ -82,7 +83,7 @@ public class VideoServicImpl implements VideoService {
 		videosMapper.updateByPrimaryKeySelective(video);
 		
 	}
-  
+    //获取全部视频 
 	@Transactional(propagation = Propagation.REQUIRED)
 	@Override
 	public PagedResult getAllVideos(Videos video, Integer isSaveRecord, Integer page, Integer pageSize) {
@@ -115,7 +116,7 @@ public class VideoServicImpl implements VideoService {
 		return pagedResult;
 	}
 
-	
+	//获取热词
 	@Transactional(propagation = Propagation.SUPPORTS)
 	@Override
 	public List<String> getHotwords() {
@@ -163,7 +164,7 @@ public class VideoServicImpl implements VideoService {
 		usersMapper.reduceReceiveLikeCount(userId);
 		
 	}
-     
+    //查找自己关注的视频
 	@Transactional(propagation = Propagation.SUPPORTS)
 	@Override
 	public PagedResult queryMyFollowVideos(String userId, Integer page, int pageSize) {
@@ -180,7 +181,7 @@ public class VideoServicImpl implements VideoService {
 		
 		return pagedResult;
 	}
-    
+    //查找喜欢的视频
 	@Transactional(propagation = Propagation.SUPPORTS)
 	@Override
 	public PagedResult queryMyLikeVideos(String userId, Integer page, Integer pageSize) {
@@ -197,7 +198,7 @@ public class VideoServicImpl implements VideoService {
 		
 		return pagedResult;
 	}
-    
+    //保存评论
 	@Transactional(propagation = Propagation.REQUIRED)
 	@Override
 	public void saveComment(Comments comment) {
@@ -206,7 +207,7 @@ public class VideoServicImpl implements VideoService {
 		comment.setCreateTime(new Date());
 		commentsMapper.insert(comment);	
 	}
-    
+    //显示所有评论
 	@Transactional(propagation = Propagation.REQUIRED)
 	@Override
 	public PagedResult getAllComments(String videoId, Integer page, Integer pageSize) {

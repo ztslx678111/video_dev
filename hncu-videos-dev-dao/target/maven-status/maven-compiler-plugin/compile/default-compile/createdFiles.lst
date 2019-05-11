@@ -1,0 +1,11 @@
+cn\hncu\mapper\UsersFansMapper.class
+cn\hncu\mapper\CommentsMapperCustom.class
+cn\hncu\mapper\UsersMapper.class
+cn\hncu\mapper\BgmMapper.class
+cn\hncu\mapper\CommentsMapper.class
+cn\hncu\mapper\VideosMapperCustom.class
+cn\hncu\mapper\VideosMapper.class
+cn\hncu\utils\MyMapper.class
+cn\hncu\mapper\UsersLikeVideosMapper.class
+cn\hncu\mapper\UsersReportMapper.class
+cn\hncu\mapper\SearchRecordsMapper.class
