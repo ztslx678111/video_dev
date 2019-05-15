@@ -2,14 +2,14 @@ cn\hncu\cofig\ResourceConfig.class
 cn\hncu\controller\interceptor\MiniInterceptor.class
 cn\hncu\controller\VideoController.class
 cn\hncu\Swagger2.class
-cn\hncu\service\crud\UserCRUDService.class
 cn\hncu\WarStartApplication.class
-cn\hncu\service\crud\UserCRUDServiceImpl.class
-cn\hncu\controller\UserCRUDController.class
+cn\hncu\ZKCuratorClient.class
 cn\hncu\controller\BasicController.class
 cn\hncu\controller\BgmController.class
 cn\hncu\controller\RegistLoginController.class
 cn\hncu\controller\HelloWorldController.class
 cn\hncu\Application.class
 cn\hncu\WebMvcConfig.class
+cn\hncu\RedisPoolUtil.class
 cn\hncu\controller\UserController.class
+cn\hncu\ZKCuratorClient$1.class

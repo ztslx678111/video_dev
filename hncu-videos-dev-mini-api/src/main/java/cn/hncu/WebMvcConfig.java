@@ -27,7 +27,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/**")
 		.addResourceLocations("classpath:/META-INF/resources/")
-		.addResourceLocations("file:D:/hncu_videos_dev/");
+		.addResourceLocations("file:C:/hncu_videos_dev/");
 		//访问所有资源,虚拟目录
 	}
    

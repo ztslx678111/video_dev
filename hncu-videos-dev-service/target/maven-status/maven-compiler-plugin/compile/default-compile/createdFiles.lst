@@ -2,5 +2,5 @@ cn\hncu\service\VideoService.class
 cn\hncu\service\BgmService.class
 cn\hncu\service\UserService.class
 cn\hncu\service\impl\BgmServicImpl.class
-cn\hncu\service\impl\UserServicImpl.class
 cn\hncu\service\impl\VideoServicImpl.class
+cn\hncu\service\impl\UserServiceImpl.class

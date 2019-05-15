@@ -22,10 +22,15 @@ import io.swagger.annotations.ApiOperation;
 @RestController
 @Api(value="用户注册的接口",tags= {"注册和登陆的controller"} )
 public class RegistLoginController extends BasicController{
-	
+	//引入service
 	@Autowired
     private UserService userService;
 	
+	/**
+	 * @Description 用户注册的接口
+	 * @param user
+	 * @return
+	 */
 	@ApiOperation(value="用户注册",notes="用户注册的接口")
 	@PostMapping("/regist")
 	public hncuJSONResult regist(@RequestBody Users user) {
@@ -66,7 +71,7 @@ public class RegistLoginController extends BasicController{
 	}
 	
 	/**
-	 * 设置用户session Token
+	 * @Description 设置用户session Token
 	 * @param userModel
 	 * @return
 	 */
@@ -81,7 +86,12 @@ public class RegistLoginController extends BasicController{
 		return userVo;
 	}
 	
-	
+	/**
+	 * @Description 用户登陆的接口
+	 * @param user
+	 * @return
+	 * @throws Exception
+	 */
 	@ApiModelProperty(value = "用户登录",notes = "用户登录的接口")
 	@PostMapping(value="/login")
 	public hncuJSONResult login(@RequestBody Users user) throws Exception {
@@ -108,6 +118,12 @@ public class RegistLoginController extends BasicController{
 		
 	}
 	
+	/**
+	 * @Description 用户注销的接口
+	 * @param userId
+	 * @return
+	 * @throws Exception
+	 */
 	@ApiModelProperty(value = "用户注销",notes = "用户注销的接口")
 	@ApiImplicitParam(name = "userId",value = "用户Id", required = true , dataType = "String" ,paramType= "query" )
 	@PostMapping(value="/logout")

@@ -53,9 +53,9 @@ public class FFMpegTest {
 	}
 	
 	public static void main(String[] args) {
-	   FFMpegTest ffmpeg = new FFMpegTest("D:\\ffmpeg\\bin\\ffmpeg.exe");
+	   FFMpegTest ffmpeg = new FFMpegTest("C:\\ffmpeg\\bin\\ffmpeg.exe");
 	   try {
-		ffmpeg.convertor("D:\\ffmpeg\\bin\\222.mp4", "D:\\ffmpeg\\bin\\222.avi");
+		ffmpeg.convertor("C:\\ffmpeg\\bin\\222.mp4", "C:\\ffmpeg\\bin\\222.avi");
 	} catch (Exception e) {
 		e.printStackTrace();
 	}

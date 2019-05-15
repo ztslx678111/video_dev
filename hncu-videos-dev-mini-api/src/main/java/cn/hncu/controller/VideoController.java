@@ -32,7 +32,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 
 @RestController
-@Api(value="视频相关业务得接口", tags= {"视频相关业务得controller"})
+@Api(value="视频相关业务的接口", tags= {"视频相关业务得controller"})
 @RequestMapping("/video")
 public class VideoController extends BasicController{
      
@@ -48,11 +48,11 @@ public class VideoController extends BasicController{
 		@ApiImplicitParam(name="bgmId",value="背景音乐id",required=false,
         dataType="String",paramType="form"),
 		@ApiImplicitParam(name="videoSeconds",value="背景音乐播放长度",required=true,
-        dataType="double",paramType="form"),
+        dataType="String",paramType="form"),
 		@ApiImplicitParam(name="videoWidth",value="视频宽度",required=true,
-        dataType="int",paramType="form"),
+        dataType="String",paramType="form"),
 		@ApiImplicitParam(name="videoHeight",value="视频高度",required=true,
-        dataType="int",paramType="form"),
+        dataType="String",paramType="form"),
 		@ApiImplicitParam(name="desc",value="视频描述",required=false,
         dataType="String",paramType="form")
 	})
@@ -68,7 +68,7 @@ public class VideoController extends BasicController{
 		System.out.println(userId);
 		
 		//文件保存得命名空间
-		//String fileSpace = "D:/hncu_videos_dev";
+		//String fileSpace = "C:/hncu_videos_dev";
 		//保存到数据库中得相对路径
 		String uploadPathDB ="/" +userId +"/video";
 		String coverPathDB="/" + userId + "/video" ;
@@ -89,7 +89,7 @@ public class VideoController extends BasicController{
 				if(StringUtils.isNotEmpty(fileName)) {
 					//文件上传得最终保存路径 绝对路径
 					finalVideoPath = FILE_SPACE + uploadPathDB + "/" + fileName;
-					//设置数据库保存得路径
+					//设置数据库保存的路径
 					uploadPathDB += ("/" + fileName);
 					coverPathDB = coverPathDB + "/" + fileNamePrefix + ".jpg";
 					//新建文件

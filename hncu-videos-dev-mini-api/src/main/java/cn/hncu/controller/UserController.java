@@ -30,9 +30,17 @@ import io.swagger.annotations.ApiOperation;
 @RequestMapping("/user")
 public class UserController extends BasicController{
 	
+	
+	//引入usersService
 	@Autowired
     private UserService userService;
-	
+	/**
+	 * @Description:用户上传头像接口
+	 * @param userId
+	 * @param files
+	 * @return
+	 * @throws Exception
+	 */
 	@ApiOperation(value="用户上传头像",notes="用户上传头像的接口")
 	@ApiImplicitParam(name="userId",value="用户id",required=true,
 	                 dataType="String",paramType="query")
@@ -43,31 +51,28 @@ public class UserController extends BasicController{
 			return hncuJSONResult.errorMsg("用户id不能为空...");
 		}
 		
-		
-		//文件保存得命名空间
-		String fileSpace = "D:/hncu_videos_dev";
 		//保存到数据库中得相对路径
 		String uploadPathDB ="/" +userId +"/face";
-		FileOutputStream fout= null;
-		InputStream in = null;
+		FileOutputStream fout= null;//定义输出流
+		InputStream in = null;//定义输入流
 		try {
-			if(files != null && files.length > 0 ) {
-				String fileName = files[0].getOriginalFilename();
-				if(StringUtils.isNotEmpty(fileName)) {
+			if(files != null && files.length > 0 ) {//如果文件不为空或者文件长度大于0
+				String fileName = files[0].getOriginalFilename(); //获得文件的原始命名
+				if(StringUtils.isNotBlank(fileName)) { //如果文件名不为空
 					//文件上传得最终保存路径 绝对路径
-					String finalFacePath = fileSpace + uploadPathDB + "/" + fileName;
+					String finalFacePath = FILE_SPACE + uploadPathDB + "/" + fileName;
 					//设置数据库保存得路径
 					uploadPathDB += ("/" + fileName);
 					
-					File outFile = new File(finalFacePath);
+					File outFile = new File(finalFacePath);//创建文件
 					if(outFile.getParentFile() != null || !outFile.getParentFile().isDirectory()) {
 						//创建父文件夹
 						outFile.getParentFile().mkdirs();
 					}
 					
-					fout= new FileOutputStream(outFile);
-					in = files[0].getInputStream();
-					IOUtils.copy(in, fout);
+					fout= new FileOutputStream(outFile);//输出文件流
+					in = files[0].getInputStream();//获取输入流
+					IOUtils.copy(in, fout);//流拷贝
 				}
 				
 			} else {
@@ -88,13 +93,19 @@ public class UserController extends BasicController{
 		Users user = new Users();
 		user.setId(userId);
 		user.setFaceImage(uploadPathDB);
-		userService.updateUserInfo(user);
+		userService.updateUserInfo(user);//更新到数据库
 		
 		
-		return hncuJSONResult.ok(uploadPathDB);
+		return hncuJSONResult.ok(uploadPathDB); //返回相对路径
 	}
 	
-	
+	/**
+	 * @Description:查询用户信息接口
+	 * @param userId
+	 * @param fanId
+	 * @return
+	 * @throws Exception
+	 */
 	@ApiOperation(value="查询用户信息",notes="查询用户信息的接口")
 	@ApiImplicitParam(name="userId",value="用户id",required=true,
 	                 dataType="String",paramType="query")
@@ -147,7 +158,13 @@ public class UserController extends BasicController{
 		return hncuJSONResult.ok(bean);
 	}
   
-	
+	/**
+	 * @Description:点击关注，成为粉丝的接口
+	 * @param userId
+	 * @param fanId
+	 * @return
+	 * @throws Exception
+	 */
 	@PostMapping("/beyourfans")
 	public hncuJSONResult beyourfans(String userId, String fanId) throws Exception {
 		
@@ -160,6 +177,13 @@ public class UserController extends BasicController{
 		return hncuJSONResult.ok("关注成功...");
 	}
 	
+	/**
+     * @Description: 删除关注，取消成为粉丝的接口
+	 * @param userId
+	 * @param fanId
+	 * @return
+	 * @throws Exception
+	 */
 	@PostMapping("/dontbeyourfans")
 	public hncuJSONResult dontbeyourfans(String userId, String fanId) throws Exception {
 		
@@ -172,6 +196,12 @@ public class UserController extends BasicController{
 		return hncuJSONResult.ok("取消关注成功...");
 	}
 	
+	/**
+     * @Description:举报接口
+	 * @param usersReport
+	 * @return
+	 * @throws Exception
+	 */
 	@PostMapping("/reportUser")
 	public hncuJSONResult reportUser(@RequestBody UsersReport usersReport) throws Exception {
 		
