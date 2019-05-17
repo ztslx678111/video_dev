@@ -31,6 +31,11 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 		//访问所有资源,虚拟目录
 	}
    
+	@Bean(initMethod="init")
+	public ZKCuratorClient zkCuratorClient() {
+		return new ZKCuratorClient();
+	}
+	
 	@Bean
 	public MiniInterceptor miniInterceptor() {
 		 return new MiniInterceptor();

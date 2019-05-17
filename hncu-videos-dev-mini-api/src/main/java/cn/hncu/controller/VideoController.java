@@ -41,6 +41,18 @@ public class VideoController extends BasicController{
 	@Autowired
 	private VideoService videoService;
 	
+	/**
+	 * 用户上传视频
+	 * @param userId
+	 * @param bgmId
+	 * @param videoSeconds
+	 * @param videoWidth
+	 * @param videoHeight
+	 * @param desc
+	 * @param file
+	 * @return
+	 * @throws Exception
+	 */
 	@ApiOperation(value="用户上传视频",notes="用户上传视频的接口")
 	@ApiImplicitParams({
 		@ApiImplicitParam(name="userId",value="用户id",required=true,
@@ -138,7 +150,7 @@ public class VideoController extends BasicController{
 			//合成后的视频的最终路径
 			finalVideoPath = FILE_SPACE + uploadPathDB;
 			//调用合成方法 合成视频 并将 所生成的视频 放入 
-			tool.convertor(videoInputPath, mp3InputPath, videoSeconds, finalVideoPath);
+			tool.convertor(mp3InputPath,videoInputPath, videoSeconds, finalVideoPath);
 		}
 		
 		//System.out.println(uploadPathDB);
@@ -168,7 +180,14 @@ public class VideoController extends BasicController{
 		return hncuJSONResult.ok(videoId);
 	}
 	
-	
+    /**
+     * 用户上传封面
+     * @param userId
+     * @param videoId
+     * @param file
+     * @return
+     * @throws Exception
+     */
 	@ApiOperation(value="上传封面",notes="上传封面的接口")
 	@ApiImplicitParams({
 		@ApiImplicitParam(name="userId",value="用户的id",required=true,
@@ -311,24 +330,52 @@ public class VideoController extends BasicController{
 		return hncuJSONResult.ok(videosList);
 	}
 	
-	
+	/**
+	 * 热词搜索
+	 * @return
+	 * @throws Exception
+	 */
 	@PostMapping(value="/hot")
 	public hncuJSONResult hot() throws Exception {
 		return hncuJSONResult.ok(videoService.getHotwords());
 	}
-	
+	 
+	/**
+	 * 点赞视频
+	 * @param userId
+	 * @param videoId
+	 * @param videoCreaterId
+	 * @return
+	 * @throws Exception
+	 */
 	@PostMapping(value="/userLike")
 	public hncuJSONResult userLike(String userId,String videoId, String videoCreaterId) throws Exception {
 		videoService.userLikeVideo(userId, videoId, videoCreaterId);
 		return hncuJSONResult.ok();
 	}
 	
+	/**
+	 * 取消点赞视频
+	 * @param userId
+	 * @param videoId
+	 * @param videoCreaterId
+	 * @return
+	 * @throws Exception
+	 */
 	@PostMapping(value="/userUnLike")
 	public hncuJSONResult userUnLike(String userId,String videoId, String videoCreaterId) throws Exception {
 		videoService.userUnLikeVideo(userId, videoId, videoCreaterId);
 		return hncuJSONResult.ok();
 	}
 	
+	/**
+	 * 保存评论
+	 * @param comment
+	 * @param fatherCommentId
+	 * @param toUserId
+	 * @return
+	 * @throws Exception
+	 */
 	@PostMapping("/saveComment")
 	public hncuJSONResult saveComment(@RequestBody Comments comment, String fatherCommentId, String toUserId) throws Exception {
 		
@@ -339,8 +386,16 @@ public class VideoController extends BasicController{
 		
 		videoService.saveComment(comment);
 		return hncuJSONResult.ok();
-	}
+	} 
 	
+	/**
+	 * 获取评论
+	 * @param videoId
+	 * @param page
+	 * @param pageSize
+	 * @return
+	 * @throws Exception
+	 */
 	@PostMapping("/getVideoComments")
 	public hncuJSONResult getVideoComments(String videoId, Integer page, Integer pageSize) throws Exception {
 		

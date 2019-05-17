@@ -76,9 +76,9 @@ public class FetchVideoCover {
 	
 	public static void main(String[] args) {
 		// 获取视频信息。
-		FetchVideoCover videoInfo = new FetchVideoCover("D:\\ffmpeg\\bin\\ffmpeg.exe");
+		FetchVideoCover videoInfo = new FetchVideoCover("C:\\ffmpeg\\bin\\ffmpeg.exe");
 		try {
-			videoInfo.getCover("D:\\ffmpeg\\bin\\222.mp4","D:\\ffmpeg\\222.jpg");
+			videoInfo.getCover("C:\\ffmpeg\\bin\\222.mp4","C:\\ffmpeg\\222.jpg");
 
 		} catch (Exception e) {
 			e.printStackTrace();

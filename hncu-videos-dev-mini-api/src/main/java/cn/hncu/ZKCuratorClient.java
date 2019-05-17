@@ -76,6 +76,7 @@ public class ZKCuratorClient {
 					log.info("监听到事件 CHILD_ADDED");
 					
 					// 1. 从数据库查询bgm对象，获取路径path
+					//updated 修改为从zk获取
 					String path = event.getData().getPath();
 					String operatorObjStr = new String(event.getData().getData());
 					Map<String, String> map = JsonUtils.jsonToPojo(operatorObjStr, Map.class);
@@ -94,7 +95,7 @@ public class ZKCuratorClient {
 //					String songPath = bgm.getPath();
 					
 					// 2. 定义保存到本地的bgm路径
-//					String filePath = "C:\\imooc_videos_dev" + songPath;
+//					String filePath = "C:\\hncu_videos_dev" + songPath;
 					String filePath = resourceConfig.getFileSpace() + songPath;
 					
 					// 3. 定义下载的路径（播放url）
